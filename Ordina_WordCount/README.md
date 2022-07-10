@@ -52,7 +52,6 @@ The task was to implement a part of a text processing library.
        }
    
 #### To run curl commands, enter at the command prompt the below commands to send these requests:
- 
      - curl "http://localhost:8080/wordfrequency/highestfrequencyword?text=the,lady,sat,on,the,wall"
      - curl "http://localhost:8080/wordfrequency/frequencyofword?text=the,lady,sat,on,the,wall&word=the"
      - curl "http://localhost:8080/wordfrequency/mostfrequentnwords?text=the,lady,sat,on,the,wall,on,a,pillow&n=2"

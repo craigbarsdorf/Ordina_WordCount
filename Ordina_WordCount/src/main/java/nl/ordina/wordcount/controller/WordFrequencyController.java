@@ -44,13 +44,16 @@ public class WordFrequencyController {
         return createResponse(highestFrequency, text);
     }
 
+    // A helper method just to construct the response for each of the controllers
     private ResponseEntity<Response<Object>> createResponse(Object highestFrequency, String text) {
 
+        // Build the response
         Response<Object> response = new Response<>();
         response.setStatus(HttpStatus.OK.value());
         response.setResponse(highestFrequency);
         response.setResponseText(text);
 
+        // Send the response back to the controller to then send out the response
         return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 }
