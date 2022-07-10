@@ -1,0 +1,7 @@
+nl/ordina/wordcount/dto/WordsFrequencies.class
+nl/ordina/wordcount/WordCountApplication.class
+nl/ordina/wordcount/dto/WordFrequency.class
+nl/ordina/wordcount/service/WordFrequencyAnalyzerImpl.class
+nl/ordina/wordcount/web/Response.class
+nl/ordina/wordcount/controller/WordFrequencyController.class
+nl/ordina/wordcount/service/WordFrequencyAnalyzer.class
