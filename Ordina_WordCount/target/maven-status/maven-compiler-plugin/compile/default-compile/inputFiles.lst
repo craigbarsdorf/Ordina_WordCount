@@ -1,7 +1,7 @@
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/dto/WordsFrequencies.java
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/WordCountApplication.java
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/service/WordFrequencyAnalyzerImpl.java
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/dto/WordFrequency.java
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/service/WordFrequencyAnalyzer.java
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/controller/WordFrequencyController.java
-/Users/craigbarsdorf/Documents/Work/Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/web/Response.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/service/WordFrequencyAnalyzerImpl.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/WordCountApplication.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/dto/WordFrequency.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/service/WordFrequencyAnalyzer.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/web/Response.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/dto/WordsFrequencies.java
+/Users/craigbarsdorf/Documents/Personal/Business/Java Projects/Ordina_WordCount/Ordina_WordCount/src/main/java/nl/ordina/wordcount/controller/WordFrequencyController.java

@@ -19,7 +19,7 @@ public class WordFrequencyAnalyzerImplUTest {
     @InjectMocks
     private WordsFrequencies wordsFrequencies;
 
-    private WordFrequencyAnalyzerImpl testObj;
+    private WordFrequencyAnalyzer testObj;
 
     private static final String TEXT_STRING = "The apple lay/-+!@#$%^&());:[]{}|ON THE table that is on a carpet," +
             " in a bowel with more of the apples";

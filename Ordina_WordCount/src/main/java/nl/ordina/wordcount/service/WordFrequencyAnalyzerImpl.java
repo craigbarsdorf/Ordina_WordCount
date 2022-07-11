@@ -73,7 +73,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
     /**
      * Gets the amount of times the specified number of words appear in the given text string.
      * @param text This is the string of text characters, delimited by special characters
-     * @param int This is the number of words that must be search for in the given string.
+     * @param n This is the number of words that must be search for in the given string.
      *            These would be the words with the highest frequencies.
      * @return List<WordFrequency> This is the list of words, as per the requested amount of words,
      *         that appear in the given text string.
