@@ -25,7 +25,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
     @Override
     public int calculateHighestFrequency(String text) {
 
-        List<WordsFrequencies> wordsFrequenciesList = getWordAndFrequencyList(text);
+        List<WordFrequency> wordsFrequenciesList = getWordAndFrequencyList(text);
 
         int highestFrequency = 0;
         for (WordFrequency wordFrequency : wordsFrequenciesList) {
@@ -59,7 +59,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
         }
 
         // Get the frequency of the word in the string
-        List<WordsFrequencies> wordsFrequenciesList = getWordAndFrequencyList(text);
+        List<WordFrequency> wordsFrequenciesList = getWordAndFrequencyList(text);
         for (WordFrequency wordFreq : wordsFrequenciesList) {
             if (wordFreq.getWord().equalsIgnoreCase(word)) {
                 wordFrequency = wordFreq.getFrequency();
@@ -84,7 +84,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
         Map<String, Integer> mapOfFrequentWords = new TreeMap<>();
 
         // Get the initial list of words and the amount of times they appear in the given text string
-        List<WordsFrequencies> wordsFrequenciesList = getWordAndFrequencyList(text);
+        List<WordFrequency> wordsFrequenciesList = getWordAndFrequencyList(text);
 
         // Put the list of words and their frequencies into a map
         for (WordFrequency wordFrequency : wordsFrequenciesList) {
@@ -118,20 +118,22 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
     }
 
     // Gets all the words in the given text string, and counts the amount of times the word is in the string
-    private static List<WordsFrequencies> getWordAndFrequencyList(String text) {
+    private static List<WordFrequency> getWordAndFrequencyList(String text) {
 
-        List<WordsFrequencies> wordFrequencyList = new ArrayList<>();
+        List<WordFrequency> wordsfrequencies = new ArrayList<>();
 
-        if (text == null || text.isEmpty()) return wordFrequencyList;
+        if (text == null || text.isEmpty()) return wordsfrequencies;
 
         // Will replace every character that's not a letter with a space
         String resultString = text.replaceAll("\\P{L}", " ");
         resultString = resultString.trim().replaceAll(" +", " ");
 
         // If the text string only had special characters
-        if (resultString.isEmpty()) return wordFrequencyList;
+        if (resultString.isEmpty()) return wordsfrequencies;
 
         String[] words = resultString.split(" ");
+
+        List<WordsFrequencies> wordFrequencyList = new ArrayList<>();
 
         for (String word : words) {
 
@@ -156,6 +158,9 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
             }
         }
 
-        return wordFrequencyList;
+        // Make the words frequencies list immutable
+        wordsfrequencies.addAll(wordFrequencyList);
+
+        return wordsfrequencies;
     }
 }
