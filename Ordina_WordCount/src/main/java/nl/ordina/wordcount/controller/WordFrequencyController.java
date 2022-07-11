@@ -1,6 +1,7 @@
 package nl.ordina.wordcount.controller;
 
 import nl.ordina.wordcount.dto.WordFrequency;
+import nl.ordina.wordcount.service.WordFrequencyAnalyzer;
 import nl.ordina.wordcount.web.Response;
 import nl.ordina.wordcount.service.WordFrequencyAnalyzerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 public class WordFrequencyController {
 
     @Autowired
-    private WordFrequencyAnalyzerImpl wordFrequencyAnalyzer;
+    private WordFrequencyAnalyzer wordFrequencyAnalyzer;
 
     @RequestMapping("/highestfrequencyword")
     public ResponseEntity<Response<Object>> getHighestFrequencyWord(@RequestParam String text) {

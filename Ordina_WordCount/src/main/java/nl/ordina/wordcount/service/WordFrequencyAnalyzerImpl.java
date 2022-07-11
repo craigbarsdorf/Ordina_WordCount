@@ -22,6 +22,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
      * @param text This is the string of text characters, delimited by special characters
      * @return highestFrequency This is the number of times the word with the highest frequency appeared.
      */
+    @Override
     public int calculateHighestFrequency(String text) {
 
         List<WordsFrequencies> wordsFrequenciesList = getWordAndFrequencyList(text);
@@ -42,6 +43,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
      * @param word This is the word that must be searched for and counted in the given text string.
      * @return highestFrequency This is the number of times the given word appears in the given text string.
      */
+    @Override
     public int calculateFrequencyForWord (String text, String word) {
 
         int wordFrequency = 0;
@@ -76,6 +78,7 @@ public class WordFrequencyAnalyzerImpl implements WordFrequencyAnalyzer {
      * @return List<WordFrequency> This is the list of words, as per the requested amount of words,
      *         that appear in the given text string.
      */
+    @Override
     public List<WordFrequency> calculateMostFrequentNWords (String text, int n) {
 
         Map<String, Integer> mapOfFrequentWords = new TreeMap<>();
