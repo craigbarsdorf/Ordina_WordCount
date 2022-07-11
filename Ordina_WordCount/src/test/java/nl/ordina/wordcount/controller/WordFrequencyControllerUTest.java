@@ -81,7 +81,7 @@ public class WordFrequencyControllerUTest {
     }
 
     @Test
-    public void existingValidTextStringAndNumber_getFrequencyForWord_returnsMostFrequenctNWords() throws Exception {
+    public void existingValidTextStringAndNumber_getMostFrequentNWords_returnsMostFrequenctNWords() throws Exception {
 
         MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
         paraMap.add("text", "on the table is the cup sitting on");
@@ -94,7 +94,7 @@ public class WordFrequencyControllerUTest {
     }
 
     @Test
-    public void emptyTextStringAndNumber_getFrequencyForWord_returnsStatus400() throws Exception {
+    public void emptyTextStringAndNumber_getMostFrequentNWords_returnsStatus400() throws Exception {
 
         MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
         paraMap.add("text", "");
@@ -106,7 +106,7 @@ public class WordFrequencyControllerUTest {
     }
 
     @Test
-    public void existingTextStringAndNumberZero_getFrequencyForWord_returnsStatus400() throws Exception {
+    public void existingTextStringAndNumberZero_getMostFrequentNWords_returnsStatus400() throws Exception {
 
         MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
         paraMap.add("text", "on the table is the cup sitting on");
