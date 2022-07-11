@@ -23,20 +23,31 @@ public class WordFrequencyControllerUTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testGetHighestFrequencyWord() throws Exception {
+    public void existingValidTextString_getHighestFrequencyWord_returnsHighestFrequency() throws Exception {
 
-        MultiValueMap<String, String> paraMap =new LinkedMultiValueMap<>();
-        paraMap.add("text", "the the");
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "the,the");
 
         mockMvc.perform(get("/wordfrequency/highestfrequencyword").params(paraMap))
                 .andExpect(MockMvcResultMatchers.content()
-                        .string("{\"status\":200,\"responseText\":\"the the\",\"response\":2}"));
+                        .string("{\"status\":200,\"responseText\":\"the,the\",\"response\":2}"));
     }
 
     @Test
-    public void testGetFrequencyForWord() throws Exception {
+    public void emptyTextString_getHighestFrequencyWord_returnsZeroHighestFrequency() throws Exception {
 
-        MultiValueMap<String, String> paraMap =new LinkedMultiValueMap<>();
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "");
+
+        mockMvc.perform(get("/wordfrequency/highestfrequencyword").params(paraMap))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("{\"status\":200,\"responseText\":\"\",\"response\":0}"));
+    }
+
+    @Test
+    public void existingValidTextStringAndWord_getFrequencyForWord_returnsFrequencyForWord() throws Exception {
+
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
         paraMap.add("text", "the the");
         paraMap.add("word", "the");
 
@@ -46,14 +57,64 @@ public class WordFrequencyControllerUTest {
     }
 
     @Test
-    public void testGetMostFrequentNWords() throws Exception {
+    public void existingValidTextStringAndEmptyWord_getFrequencyForWord_returnsZeroFrequencyForWord() throws Exception {
 
-        MultiValueMap<String, String> paraMap =new LinkedMultiValueMap<>();
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "the the");
+        paraMap.add("word", "");
+
+        mockMvc.perform(get("/wordfrequency/frequencyofword").params(paraMap))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("{\"status\":200,\"responseText\":\"the the\",\"response\":0}"));
+    }
+
+    @Test
+    public void existingValidWordAndEmptyString_getFrequencyForWord_returnsZeroFrequencyForWord() throws Exception {
+
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "");
+        paraMap.add("word", "the");
+
+        mockMvc.perform(get("/wordfrequency/frequencyofword").params(paraMap))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("{\"status\":200,\"responseText\":\"\",\"response\":0}"));
+    }
+
+    @Test
+    public void existingValidTextStringAndNumber_getFrequencyForWord_returnsMostFrequenctNWords() throws Exception {
+
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
         paraMap.add("text", "on the table is the cup sitting on");
         paraMap.add("n", "2");
 
         mockMvc.perform(get("/wordfrequency/mostfrequentnwords").params(paraMap))
                 .andExpect(MockMvcResultMatchers.content()
-                        .string("{\"status\":200,\"responseText\":\"on the table is the cup sitting on\",\"response\":[{\"word\":\"on\",\"frequency\":2},{\"word\":\"the\",\"frequency\":2}]}"));
+                        .string("{\"status\":200,\"responseText\":\"on the table is the cup sitting on" +
+                                "\",\"response\":[{\"word\":\"on\",\"frequency\":2},{\"word\":\"the\",\"frequency\":2}]}"));
+    }
+
+    @Test
+    public void emptyTextStringAndNumber_getFrequencyForWord_returnsStatus400() throws Exception {
+
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "");
+        paraMap.add("n", "2");
+
+        mockMvc.perform(get("/wordfrequency/mostfrequentnwords").params(paraMap))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("{\"status\":400,\"responseText\":\"\",\"response\":[]}"));
+    }
+
+    @Test
+    public void existingTextStringAndNumberZero_getFrequencyForWord_returnsStatus400() throws Exception {
+
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "on the table is the cup sitting on");
+        paraMap.add("n", "0");
+
+        mockMvc.perform(get("/wordfrequency/mostfrequentnwords").params(paraMap))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("{\"status\":400,\"responseText\":\"on the table is the cup sitting on" +
+                                "\",\"response\":[]}"));
     }
 }

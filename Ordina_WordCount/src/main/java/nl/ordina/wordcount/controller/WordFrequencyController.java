@@ -26,7 +26,7 @@ public class WordFrequencyController {
 
         int highestFrequency = wordFrequencyAnalyzer.calculateHighestFrequency(text);
 
-        return createResponse(highestFrequency, text);
+        return createResponse(highestFrequency, text,HttpStatus.OK);
     }
 
     @RequestMapping("/frequencyofword")
@@ -34,7 +34,7 @@ public class WordFrequencyController {
 
         int highestFrequency = wordFrequencyAnalyzer.calculateFrequencyForWord(text, word);
 
-        return createResponse(highestFrequency, text);
+        return createResponse(highestFrequency, text, HttpStatus.OK);
     }
 
     @RequestMapping("/mostfrequentnwords")
@@ -42,19 +42,24 @@ public class WordFrequencyController {
 
         List<WordFrequency> highestFrequency = wordFrequencyAnalyzer.calculateMostFrequentNWords(text, n);
 
-        return createResponse(highestFrequency, text);
+        HttpStatus httpStatus = HttpStatus.OK;
+        if (highestFrequency == null || highestFrequency.isEmpty()) {
+            httpStatus = HttpStatus.BAD_REQUEST;
+        }
+
+        return createResponse(highestFrequency, text, httpStatus);
     }
 
     // A helper method just to construct the response for each of the controllers
-    private ResponseEntity<Response<Object>> createResponse(Object highestFrequency, String text) {
+    private ResponseEntity<Response<Object>> createResponse(Object highestFrequency, String text, HttpStatus httpStatus) {
 
         // Build the response
         Response<Object> response = new Response<>();
-        response.setStatus(HttpStatus.OK.value());
+        response.setStatus(httpStatus.value());
         response.setResponse(highestFrequency);
         response.setResponseText(text);
 
         // Send the response back to the controller to then send out the response
-        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(response, new HttpHeaders(), httpStatus);
     }
 }
