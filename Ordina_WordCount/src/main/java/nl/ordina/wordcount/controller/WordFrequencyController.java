@@ -32,7 +32,13 @@ public class WordFrequencyController {
     @RequestMapping("/frequencyofword")
     public ResponseEntity<Response<Object>> getFrequencyForWord(@RequestParam String text, @RequestParam String word) {
 
-        int highestFrequency = wordFrequencyAnalyzer.calculateFrequencyForWord(text, word);
+        int highestFrequency = 0;
+
+        if (!word.matches("^[a-zA-Z]+$")) {
+            return createResponse(highestFrequency, text, HttpStatus.BAD_REQUEST);
+        }
+
+        highestFrequency = wordFrequencyAnalyzer.calculateFrequencyForWord(text, word);
 
         return createResponse(highestFrequency, text, HttpStatus.OK);
     }

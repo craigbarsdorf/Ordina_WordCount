@@ -57,7 +57,7 @@ public class WordFrequencyControllerUTest {
     }
 
     @Test
-    public void existingValidTextStringAndEmptyWord_getFrequencyForWord_returnsZeroFrequencyForWord() throws Exception {
+    public void existingValidTextStringAndEmptyWord_getFrequencyForWord_returnsStatus400() throws Exception {
 
         MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
         paraMap.add("text", "the the");
@@ -65,7 +65,7 @@ public class WordFrequencyControllerUTest {
 
         mockMvc.perform(get("/wordfrequency/frequencyofword").params(paraMap))
                 .andExpect(MockMvcResultMatchers.content()
-                        .string("{\"status\":200,\"responseText\":\"the the\",\"response\":0}"));
+                        .string("{\"status\":400,\"responseText\":\"the the\",\"response\":0}"));
     }
 
     @Test
@@ -78,6 +78,18 @@ public class WordFrequencyControllerUTest {
         mockMvc.perform(get("/wordfrequency/frequencyofword").params(paraMap))
                 .andExpect(MockMvcResultMatchers.content()
                         .string("{\"status\":200,\"responseText\":\"\",\"response\":0}"));
+    }
+
+    @Test
+    public void existingValidStringButInvalidWord_getFrequencyForWord_returnsStatus400() throws Exception {
+
+        MultiValueMap<String, String> paraMap = new LinkedMultiValueMap<>();
+        paraMap.add("text", "the th");
+        paraMap.add("word", "@");
+
+        mockMvc.perform(get("/wordfrequency/frequencyofword").params(paraMap))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("{\"status\":400,\"responseText\":\"the th\",\"response\":0}"));
     }
 
     @Test
